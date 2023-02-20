@@ -24,7 +24,7 @@ export default class Library {
   saveToLocalStorage() {
     window.localStorage.setItem(
       this.LOCAL_STORAGE_KEY,
-      JSON.stringify(this.collection),
+      JSON.stringify(this.collection)
     );
   }
 
@@ -42,28 +42,47 @@ export default class Library {
       title.value = '';
       author.value = '';
       title.focus();
-      this.showToast('Book was added successfully', () => this.toggleVisibility('collection'));
+      this.showToast('Book was added successfully', () =>
+        this.toggleVisibility('collection')
+      );
     }
   }
 
   render() {
-    this.list.innerHTML = this.collection
-      .map(
-        (book) => `<li class="bookRow">
-      <article>
-          <p id="title">"${book.title}" by ${book.author}</p>
-          <button class="remove">Remove</button>
-      </article>
-      </li>`,
-      )
-      .join('');
+    if (this.collection.length > 0) {
+      this.list.innerHTML = this.collection
+        .map(
+          (book) => `<li class="bookRow">
+        <article>
+        <p id="title">"${book.title}" by ${book.author}</p>
+        <button class="remove">Remove</button>
+        </article>
+        </li>`
+        )
+        .join('');
+    } else {
+      this.list.innerHTML = this.collection;
+      const listItem = document.createElement('li');
+      const text = document.createElement('p');
+      const button = document.createElement('button');
+      const article = document.createElement('article');
+      listItem.className = 'bookRow';
+      button.textContent = 'Add Book';
+      text.textContent = 'No Books in storage, Try adding some';
+      button.onclick = () => this.toggleVisibility('addBook');
+      article.append(text, button);
+      listItem.appendChild(article);
+      this.list.appendChild(listItem);
+    }
 
     const remove = Array.from(document.getElementsByClassName('remove'));
-    remove.forEach((btn, i) => btn.addEventListener('click', () => {
-      this.showToast(`${this.collection[i].title} was removed`, null, 'OK');
-      this.deleteBook(i);
-      this.saveToLocalStorage();
-      this.render();
-    }));
+    remove.forEach((btn, i) =>
+      btn.addEventListener('click', () => {
+        this.showToast(`${this.collection[i].title} was removed`, null, 'OK');
+        this.deleteBook(i);
+        this.saveToLocalStorage();
+        this.render();
+      })
+    );
   }
 }
