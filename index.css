@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'IM FELL English SC';
+  src: url(./fonts/IMFell.ttf);
+}
+
+:root {
+  --beige: #ffe8d1;
+  --brown: #443627;
+  --blue: #28afb0;
+  --gray: #81968f;
+}
+
+body {
+  font-family: 'IM FELL English SC', sans-serif;
+  padding: 0 0.5rem;
+  background: url('images/booksBg.jpg') no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(3px);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.toast {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--beige);
+  border: 2px solid var(--brown);
+  animation: pop 0.5s linear 1 forwards;
+  transform: translateX(100%);
+}
+
+.message {
+  font-weight: bold;
+  color: var(--brown);
+  text-shadow: 0.1rem 0.1rem 0.5rem var(--brown);
+}
+
+.action {
+  background-color: var(--brown);
+  border: none;
+  padding: 0.2rem 1rem;
+  box-shadow: none;
+}
+
+.slider {
+  position: absolute;
+  background-color: var(--blue);
+  height: 0.5rem;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  animation: slide 3s linear 1 forwards;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  padding: 0.5rem;
+  background-color: var(--beige);
+}
+
+.logo {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 1.3rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 0.2rem 0.5rem;
+  border-left: 2px solid black;
+  font-size: 1.3rem;
+}
+
+.nav-item:nth-child(1) {
+  border-left: none;
+}
+
+.link {
+  color: var(--blue);
+}
+
+time {
+  align-self: flex-end;
+  padding: 0.2rem 0.1rem;
+  font-size: 1.2rem;
+  color: var(--beige);
+  text-shadow: 1px 1px black;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  display: none;
+  width: 100%;
+  height: 70vh;
+  font-size: 1.3rem;
+}
+
+.active {
+  display: block;
+}
+
+#books {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 2px solid var(--brown);
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--blue);
+  text-shadow: 3px 3px var(--brown);
+}
+
+.bookRow {
+  padding: 0.3vw;
+  margin: 3px;
+}
+
+.bookRow:nth-child(even) {
+  background-color: var(--beige);
+}
+
+.bookRow:nth-child(odd) {
+  background-color: #fff;
+}
+
+article {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  margin: 3px;
+}
+
+button {
+  font-family: 'IM FELL English SC', sans-serif;
+  font-size: 1.3rem;
+  border: 1px solid black;
+  margin-right: 9px;
+  padding: 0.3vw;
+  height: fit-content;
+  width: fit-content;
+  box-shadow: 3px 2px 3px var(--brown);
+  align-self: flex-end;
+  background-color: var(--blue);
+  color: #fff;
+}
+
+/* #addBook */
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 70vw;
+  margin: auto;
+  gap: 1rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+input {
+  font-size: 1.3rem;
+  border: 2px solid black;
+  margin-block: 6px;
+  padding: 4.5px;
+  background-color: var(--beige);
+}
+
+#contact {
+  max-width: 70vw;
+  color: var(--beige);
+  text-shadow: 3px 2px black;
+}
+
+footer {
+  margin-top: 2rem;
+  border: 2px solid black;
+  background-color: var(--beige);
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+}
+
+@keyframes pop {
+  from {
+    transform: translateX(100%);
+  }
+
+  25% {
+    transform: translateX(-20%);
+  }
+
+  50% {
+    transform: translateX(10%);
+  }
+
+  75% {
+    transform: translateX(-5%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide {
+  from {
+    width: 100;
+  }
+
+  to {
+    width: 0;
+  }
+}
