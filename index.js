@@ -3,8 +3,8 @@ import {
   navigation,
   showToast,
   toggleVisibility,
+  DateTime,
 } from './modules/index.js';
-import { DateTime } from './node_modules/luxon/src/luxon.js';
 
 window.onload = () => {
   const lib = new Library(showToast, toggleVisibility);
