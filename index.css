@@ -18,6 +18,7 @@ body {
   backdrop-filter: blur(3px);
   position: relative;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .toast {

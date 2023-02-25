@@ -17,14 +17,14 @@ export default class Library {
   }
 
   getFromLocalStorage() {
-    const cachedBooks = window.localStorage.getItem(this.LOCAL_STORAGE_KEY);
+    const cachedBooks = localStorage.getItem(this.LOCAL_STORAGE_KEY);
     return cachedBooks ? JSON.parse(cachedBooks) : [];
   }
 
   saveToLocalStorage() {
-    window.localStorage.setItem(
+    localStorage.setItem(
       this.LOCAL_STORAGE_KEY,
-      JSON.stringify(this.collection),
+      JSON.stringify(this.collection)
     );
   }
 
@@ -42,7 +42,9 @@ export default class Library {
       title.value = '';
       author.value = '';
       title.focus();
-      this.showToast('Book was added successfully', () => this.toggleVisibility('collection'));
+      this.showToast('Book was added successfully', () =>
+        this.toggleVisibility('collection')
+      );
     }
   }
 
@@ -55,7 +57,7 @@ export default class Library {
         <p id="title">"${book.title}" by ${book.author}</p>
         <button class="remove">Remove</button>
         </article>
-        </li>`,
+        </li>`
         )
         .join('');
     } else {
@@ -74,11 +76,13 @@ export default class Library {
     }
 
     const remove = Array.from(document.getElementsByClassName('remove'));
-    remove.forEach((btn, i) => btn.addEventListener('click', () => {
-      this.showToast(`${this.collection[i].title} was removed`, null, 'OK');
-      this.deleteBook(i);
-      this.saveToLocalStorage();
-      this.render();
-    }));
+    remove.forEach((btn, i) =>
+      btn.addEventListener('click', () => {
+        this.showToast(`${this.collection[i].title} was removed`, null, 'OK');
+        this.deleteBook(i);
+        this.saveToLocalStorage();
+        this.render();
+      })
+    );
   }
 }
