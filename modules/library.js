@@ -17,12 +17,12 @@ export default class Library {
   }
 
   getFromLocalStorage() {
-    const cachedBooks = window.localStorage.getItem(this.LOCAL_STORAGE_KEY);
+    const cachedBooks = localStorage.getItem(this.LOCAL_STORAGE_KEY);
     return cachedBooks ? JSON.parse(cachedBooks) : [];
   }
 
   saveToLocalStorage() {
-    window.localStorage.setItem(
+    localStorage.setItem(
       this.LOCAL_STORAGE_KEY,
       JSON.stringify(this.collection),
     );
